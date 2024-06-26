@@ -1,6 +1,6 @@
 # REVAMP_ASSIGN-14
 
-```markdown
+
 # Bacon Ipsum API Fetcher
 
 This project is a simple web page that fetches data from the Bacon Ipsum API and displays it to the user. The web page is styled using Tailwind CSS and includes a loading indicator while the data is being fetched.
@@ -57,5 +57,5 @@ bacon-ipsum-api-fetcher/
 
 - The [Bacon Ipsum](https://baconipsum.com/) team for providing the API.
 - [Tailwind CSS](https://tailwindcss.com/) for the awesome CSS framework.
-```
+
 
