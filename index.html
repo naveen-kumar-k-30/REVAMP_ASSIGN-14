@@ -4,15 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bacon Ipsum API</title>
+    <!-- Import Tailwind CSS from CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="2xl:container bg-black flex justify-center items-center h-screen p-8">
+    <!-- Main container centered both horizontally and vertically -->
     <div class="flex flex-col justify-center items-center bg-gray-500 gap-4 p-4 rounded-lg">
-        <div><p id="api-msg" class="border-2 p-2 bg-white rounded-lg">You can get a <b>Bacon Ipsum API</b> data</p></div>
+        <!-- Message display area -->
+        <div>
+            <p id="api-msg" class="border-2 p-2 bg-white rounded-lg">
+                You can get a <b>Bacon Ipsum API</b> data
+            </p>
+        </div>
+        <!-- Button and loading indicator container -->
         <div class="flex flex-col justify-center items-center">
-            <div><button id="btn" type="button" class="px-2 py-1 bg-green-400 rounded-lg">GET</button></div>
+            <!-- GET button -->
+            <div>
+                <button id="btn" type="button" class="px-2 py-1 bg-green-400 rounded-lg">
+                    GET
+                </button>
+            </div>
+            <!-- Loading indicator (initially hidden) -->
             <div id="loading" class="hidden">
                 <button type="button" class="bg-indigo-500 flex px-2 py-1 rounded-lg gap-1" disabled>
+                    <!-- Spinner icon -->
                     <svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-loader">
                         <path d="M12 2v4"/>
                         <path d="m16.2 7.8 2.9-2.9"/>
@@ -29,23 +44,28 @@
         </div>
     </div>
     <script>
+        // Get references to the button, message, and loading elements
         const btn = document.getElementById("btn");
         const msg = document.getElementById("api-msg");
         const loading = document.getElementById("loading");
 
+        // Function to fetch data from the Bacon Ipsum API
         const fetchData = () => {
             // Hide button and show loading indicator
             btn.classList.add('hidden');
             loading.classList.remove('hidden');
 
+            // Fetch data from the API
             fetch("https://baconipsum.com/api/?type=all")
-                .then(res => res.json())
+                .then(res => res.json()) // Parse JSON response
                 .then(data => {
                     console.log(data);
+                    // Display fetched data in the message element
                     msg.textContent = data.join(' ');
                 })
                 .catch(err => {
                     console.log(err);
+                    // Display error message in case of failure
                     msg.textContent = "An error occurred while fetching data.";
                 })
                 .finally(() => {
@@ -55,6 +75,7 @@
                 });
         }
 
+        // Add event listener to the button to trigger data fetch on click
         btn.addEventListener("click", fetchData);
     </script>
 </body>
